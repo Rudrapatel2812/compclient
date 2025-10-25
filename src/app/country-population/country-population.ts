@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CountryData } from '../country/country-data';
 import { PopulationData } from './population-data';
 import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { R } from '@angular/cdk/keycodes';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-country-population',
@@ -12,13 +12,17 @@ import { RouterLink } from '@angular/router';
   templateUrl: './country-population.html',
   styleUrl: './country-population.scss'
 })
-export class CountryPopulation {
-  country!: PopulationData;
+export class CountryPopulation implements OnInit {
+  countryPopulation!: PopulationData;
   
-  constructor(http:HttpClient) {
-    http.get<PopulationData>(environment.apiUrl+'api/Countries/population/26').subscribe(result => {
-      this.country = result;
-  });
+  constructor(private http:HttpClient, private activatedRoute:ActivatedRoute) {
+
  }
+  ngOnInit(): void {
+    let idparam =this.activatedRoute.snapshot.paramMap.get('id');
+    this.http.get<PopulationData>(`${environment.apiUrl}api/Countries/population/${idparam}`).subscribe(result => {
+      this.countryPopulation = result;
+  });
+  }
 
 }
