@@ -1,5 +1,5 @@
-@if (forecasts.length > 0) {
-    <table>
+
+<table>
     <thead>
         <tr>
             <th>date</th>
@@ -9,7 +9,7 @@
         </tr>
     </thead>
     <tbody>
-        @for (w of forecasts; track w) {
+        @for (w of (forecasts$ | async); track w) {
             <tr>
                 <td>{{w.date}}</td>
                 <td>{{w.temperatureC}}</td>
@@ -21,7 +21,4 @@
     </tbody>
 </table>
 
-}
-@else {    
-    <p><em>Loading...</em></p> 
-}
+

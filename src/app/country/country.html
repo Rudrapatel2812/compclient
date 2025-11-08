@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-     @for (w of countries; track w) {
+     @for (w of (countries$ | async); track w) {
     <tr>
       <td><a [routerLink]="['/country-population',w.id]">{{w.id}}</a></td>
       <td>{{ w.name }}</td>
