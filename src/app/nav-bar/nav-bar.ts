@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../auth/auth-service';
 
 
 @Component({
@@ -16,5 +17,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './nav-bar.scss'
 })
 export class NavBar {
+  constructor(public authService:AuthService) {
+    
+   }
 
 }
