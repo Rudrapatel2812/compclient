@@ -8,7 +8,7 @@
     <a mat-flat-button color="primary" [routerLink]="['/city']"> City </a>|
     <a mat-flat-button color="primary" [routerLink]="['/country']"> Country </a>  
     <span class="separator"></span>  
-    @if(authService.isAuthenticated()) {
+    @if(isAuthenticated) {
         <a mat-flat-button color="primary" (click)="authService.logout()"> Logout </a>
     } @else {
         

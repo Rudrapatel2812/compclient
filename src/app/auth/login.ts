@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormGroup, Validato
 import { from } from 'rxjs';
 import { AuthService } from './auth-service';
 import { LoginResquest } from './login-resquest';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { LoginResquest } from './login-resquest';
 })
 export class Login implements OnInit {
   form!: UntypedFormGroup;
-  constructor(private AuthService:AuthService) {
+  constructor(private AuthService:AuthService,private router:Router) {
     
   }
   ngOnInit(): void {
